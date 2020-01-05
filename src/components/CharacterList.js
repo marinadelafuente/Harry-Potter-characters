@@ -1,9 +1,10 @@
 import React from 'react';
+import '../stylesheets/CharacterList.scss';
 
 function CharacterList(props) {
     console.log(props)
     return (
-        <div>{props.children}</div>
+        <ul className="characterList">{props.children}</ul>
     )
 }
 
