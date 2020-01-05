@@ -3,7 +3,7 @@
     flex-direction: column;
     // justify-content: center;
     // align-content: center;
-    background: url("../images/kissing2.png");
+    background: url("../images/frog-cards.png");
     background-size: 260px 270px;
     background-repeat: no-repeat;
     width: 270px;
@@ -35,6 +35,11 @@
     border-radius: 15px;
     margin-top: 110px;
     margin-bottom: 30px;
+
+    &:hover {
+        animation-name: rotate;
+        animation-duration: 3s;
+    }
 }
 
 .character__gender {
