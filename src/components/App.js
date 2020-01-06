@@ -9,7 +9,7 @@ import Form from './Form';
 import getDataFromApi from '../services/fetch'
 
 
-console.log(data)
+// console.log(data)
 
 class App extends React.Component {
   constructor(props) {
@@ -53,6 +53,8 @@ class App extends React.Component {
 
   handleSelectHouse(house) {
     console.log(house);
+    const houses = this.state.characters.map(character => character.house)
+    console.log(houses);
     // this.setState({ [house]: event.target.value });
   }
 
