@@ -5,6 +5,7 @@
     // align-content: center;
     background: url("../images/frog-cards.png");
     background-size: 260px 270px;
+    background-position: 5% 3%;
     background-repeat: no-repeat;
     width: 270px;
     color: white;
@@ -29,16 +30,18 @@
 }
 
 .character__img {
-    width: 87px;
-    height: 120px;
+    width: 90px;
+    height: 123px;
     margin: 0 auto;
     border-radius: 15px;
     margin-top: 110px;
     margin-bottom: 30px;
+    box-shadow: -2px 3px 17px 9px #ffffff;
 
     &:hover {
         animation-name: rotate;
         animation-duration: 3s;
+        animation-iteration-count: infinite;
     }
 }
 

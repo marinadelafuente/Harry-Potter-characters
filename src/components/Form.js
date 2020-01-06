@@ -9,10 +9,12 @@ class Form extends React.Component {
     }
 
     handleSearchCharacter(ev) {
-        this.props.handleSearchCharacter({
-            id: ev.target.id,
-            inputValue: ev.target.value
-        });
+        this.props.handleSearchCharacter(ev.target.value);
+        // this.props.handleSearchCharacter({
+        //     id: ev.target.id,
+        //     inputValue: ev.target.value
+        // });
+        this.props.search();
     }
 
     handleSelectHouse(ev) {
@@ -23,16 +25,32 @@ class Form extends React.Component {
     }
 
     render() {
+        // console.log(this.props.search)
         return (
             <React.Fragment>
                 <div className="form">
                     <div>
-                        <label htmlFor="search" >Look for your favourite professor</label>
-                        <input type="text" name="search" id="search" className="character__search" onChange={this.handleSearchCharacter} placeholder="Characters" />
+                        <label
+                            htmlFor="search" >
+                            Look for your favourite professor
+                            </label>
+                        <input
+                            type="text"
+                            name="search"
+                            id="search"
+                            className="character__search"
+                            onChange={this.handleSearchCharacter}
+                            placeholder="Characters" />
                     </div>
                     <div>
-                        <label htmlFor="select">Choose your favourite house</label>
-                        <select name="select" id="select" className="character__select"
+                        <label
+                            htmlFor="select">
+                            Choose your favourite house
+                            </label>
+                        <select
+                            name="select"
+                            id="select"
+                            className="character__select"
                             onChange={this.handleSelectHouse}
                         >
                             <option value="Houses">Houses</option>

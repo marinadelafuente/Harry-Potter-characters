@@ -8,7 +8,7 @@ function Footer() {
             <a
                 className="github"
                 href="https://github.com/marinadelafuente"
-                // rel="noopener noreferrer"
+                rel="noopener noreferrer"
                 target="_blank">
                 <i className="fas fa-link"></i>
             </a>
