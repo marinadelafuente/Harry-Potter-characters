@@ -6,7 +6,7 @@ const formatCharacter = character => {
     }
 };
 
-const getDataFromApi = searchCharacter => fetch(`https:hp-api.herokuapp.com/api/${searchCharacter}`)
+const getDataFromApi = searchCharacter => fetch(`https:hp-api.herokuapp.com/api/characters/staff${searchCharacter}`)
     .then(response => response.json())
     .then(characters => characters.map(formatCharacter));
 
