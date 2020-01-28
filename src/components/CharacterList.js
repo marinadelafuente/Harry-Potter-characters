@@ -4,7 +4,9 @@ import '../stylesheets/CharacterList.scss';
 function CharacterList(props) {
     console.log(props)
     return (
-        <ul className="characterList">{props.children}</ul>
+        <React.Fragment>
+            <ul className="characterList">{props.children}</ul>
+        </React.Fragment>
     )
 }
 

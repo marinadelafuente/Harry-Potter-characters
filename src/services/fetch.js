@@ -1,16 +1,25 @@
 // WAY 1
 
-const formatCharacter = character => {
-    return {
-        ...character
-    }
-};
+// const formatCharacter = character => {
+//     return {
+//         ...character, id: index
+//     }
+// };
 
-const getDataFromApi = searchCharacter => fetch(`https:hp-api.herokuapp.com/api/characters/staff${searchCharacter}`)
-    .then(response => response.json())
-    .then(characters => characters.map(formatCharacter));
+// const getDataFromApi = searchCharacter => fetch(`https:hp-api.herokuapp.com/api/characters/staff${searchCharacter}`)
+//     .then(response => response.json())
+//     .then(characters => characters.map(formatCharacter, index));
 
-export default getDataFromApi;
+// export default getDataFromApi;
+
+// const getDataFromApi = (searchCharacter) => fetch(`https:hp-api.herokuapp.com/api/characters/staff`)
+//     .then(response => response.json())
+//     .then(characters => {
+//         characters.map((character, index) => {
+//              return {...character, id: index};
+//         })
+//     })
+// export default getDataFromApi;
 
 // WAY 2
 
@@ -32,7 +41,7 @@ export default getDataFromApi;
 
 // WAY 3
 
-// const getDataFromApi = () => fetch(`https://hp-api.herokuapp.com/api/characters/staff`)
-//     .then(response => response.json())
+const getDataFromApi = () => fetch(`https://hp-api.herokuapp.com/api/characters/staff`)
+    .then(response => response.json())
 
-// export default getDataFromApi;
+export default getDataFromApi;

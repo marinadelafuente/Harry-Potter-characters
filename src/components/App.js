@@ -3,11 +3,12 @@ import '../stylesheets/App.scss';
 import data from '../services/data.json'
 import CharacterList from './CharacterList';
 import Characters from './Characters';
+import CharacterCard from './CharacterCard';
 import Footer from './Footer';
 import Header from './Header';
 import Form from './Form';
 import getDataFromApi from '../services/fetch'
-
+import { Route, Switch } from 'react-router-dom';
 
 // console.log(data)
 
@@ -15,81 +16,85 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // characters: data,
       characters: [],
-      searchCharacter: ""
-      // house: "Houses"
+      searchCharacter: "",
+      house: ""
     }
     this.handleSearchCharacter = this.handleSearchCharacter.bind(this);
     this.handleSelectHouse = this.handleSelectHouse.bind(this);
-    this.search = this.search.bind(this);
+
+    // this.renderCharacters = this.renderCharacters.bind(this);
+  }
+
+  componentDidMount() {
+    getDataFromApi()
+      .then(data => {
+        const characters = data.map((character, index) => {
+          return { ...character, id: index }
+        })
+        this.setState({ characters })
+      })
   }
 
   handleSearchCharacter(searchCharacter) {
-    console.log(searchCharacter);
-    this.setState({
-      searchCharacter: searchCharacter
-    });
-  }
-
-  // search() {
-  //   getDataFromApi()
-  //     .then(data => {
-  //       data.map((character) => {
-  //         return { ...character }
-  //       })
-  //       this.setState({ characters: data })
-  //     })
-  // }
-
-  search() {
-    // console.log("Buscando...", this.state.searchCharacter)
-    getDataFromApi(this.state.searchCharacter)
-      .then(data => {
-        // console.log(data)
-        this.setState({ characters: data })
-      });
+    this.setState({ searchCharacter });
   }
 
   handleSelectHouse(house) {
-    console.log(house);
-    const houses = this.state.characters.map(character => character.house)
-    console.log(houses);
-    // this.setState({ [house]: event.target.value });
+    this.setState({ house });
   }
 
   render() {
-    // console.log(this.state)
+    console.log(this.state.characters)
+    // console.log(this.state.searchCharacter)
+    // console.log(this.state.house);
     return (
-      <React.Fragment>
+      <div>
         <Header />
         <main className="main">
-          <Form
-            handleSearchCharacter={this.handleSearchCharacter}
-            search={this.search}
-            handleSelectHouse={this.handleSelectHouse} />
-          <p className="character-text">The character I am searching for is: {this.state.searchCharacter}</p>
-          <h1 className="title">Professors at Hogwarts</h1>
-          <div>
-            <CharacterList>
-              {this.state.characters.map((characters, index) => {
-                return <Characters
-                  key={index}
-                  image={characters.image}
-                  name={characters.name}
-                  gender={characters.gender}
-                  patronus={characters.patronus}
-                  emptyPatronus="no patronus"
-                  emptyWandWood="no clue"
-                  wand={characters.wand}
-                  house={characters.house}
+          <Switch>
+            <Route exact path="/" render={() =>
+              <React.Fragment>
+                <Form
+                  handleSearchCharacter={this.handleSearchCharacter}
+                  handleSelectHouse={this.handleSelectHouse}
+                  searchCharacter={this.state.searchCharacter}
+                  house={this.state.house}
                 />
-              })}
-            </CharacterList>
-          </div>
+                <p className="character-text">The character I am searching for is: {this.state.searchCharacter}</p>
+                <h1 className="title">Professors at Hogwarts</h1>
+                <CharacterList>
+                  {this.state.characters
+                    .filter((character) =>
+                      this.state.house === ""
+                        ? (character)
+                        : (character.house.includes(this.state.house))
+                    )
+                    .filter(character => character.name.toUpperCase().includes(this.state.searchCharacter.toUpperCase()))
+                    .map((characters, id) => {
+                      return <Characters
+                        key={id}
+                        image={characters.image}
+                        name={characters.name}
+                        gender={characters.gender}
+                        patronus={characters.patronus}
+                        emptyPatronus="no patronus"
+                        emptyWandWood="no clue"
+                        wand={characters.wand}
+                        house={characters.house}
+                        id={characters.id}
+                      />
+                    })}}
+                </CharacterList>
+              </React.Fragment>
+            } />
+            <Route path="/character/:id" render={routerProps =>
+              <CharacterCard idparam={routerProps} data={data} />
+            } />
+          </Switch>
         </main>
         <Footer />
-      </React.Fragment>
+      </div >
     );
   }
 }
