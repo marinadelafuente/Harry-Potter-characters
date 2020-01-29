@@ -1,39 +1,61 @@
 import React from 'react';
 import '../stylesheets/CharacterCard.scss';
 import { Link } from 'react-router-dom';
+import Slytherin from '../images/Slytherin.png';
+import Gryffindor from '../images/Gryffindor.png';
+import Hufflepuff from '../images/Hufflepuff.png';
+import Ravenclaw from '../images/Ravenclaw.png';
 
 
 function CharacterCard(props) {
 
-    // const { data } = props;
-
     const equalId = props.idparam.match.params.id;
     const character = props.data[equalId];
+    const { house, alive, image, name } = character;
+
+    let characterHouse;
+    let cardColor;
+    if (house === "Slytherin") {
+        characterHouse = <img className="house-shield" src={Slytherin} alt="Slytherin logo" />
+        cardColor = "card-character card-character-Slytherin"
+    }
+    else if (house === "Gryffindor") {
+        characterHouse = <img className="house-shield" src={Gryffindor} alt="Gryffindor logo" />
+        cardColor = "card-character"
+    }
+    else if (house === "Ravenclaw") {
+        characterHouse = <img className="house-shield" src={Ravenclaw} alt="Ravenclaw logo" />
+        cardColor = "card-character card-character-Ravenclaw"
+    }
+    else if (house === "Hufflepuff") {
+        characterHouse = <img className="house-shield" src={Hufflepuff} alt="Hufflepuff logo" />
+        cardColor = "card-character card-character-Hufflepuff"
+    }
+    else {
+        characterHouse = <p className="no-house">I don't belong to any house</p>
+    };
 
     console.log(props.data)
-    console.log(character.alive)
+    console.log(alive)
     return (
         <React.Fragment>
-            <ul className="card">
-                <li className="card-character">
-                    <img className="character__img" src={character.image} alt={character.name}></img>
-                    <div className="character__info">
-                        <h1 className="character__name">{character.name}</h1>
-                        {character.alive === "false"
+            <div className="card">
+                <Link to={'/'}>
+                    < button className="button-return"> Return to Characters</button>
+                </Link>
+                <div className={cardColor}>
+                    <img className="card-character__img" src={image} alt={name}></img>
+                    <div className="card-character__info">
+                        <h1 className="card-character__name">{name.toUpperCase()}</h1>
+                        {characterHouse}
+                        {alive
                             ? <p className="character__alive">I am Alive!!</p>
-                            : <p className="character__dead">I am not here anymore</p>}
-                        <p>I am{character.alive === "true,"
-                            ? <span className="character__text"> an <i className={"fab fa-reddit-alien"}></i></span>
-                            : <span className="character__text"> {character.alive} 🤓</span>
+                            : <p className="character__dead">DEAD <i className={"fas fa-skull-crossbones"}></i></p>
                         }
-                        </p>
-
                     </div>
-                </li>
-            </ul>
-
+                </div>
+            </div>
         </React.Fragment>
-
     )
 }
 

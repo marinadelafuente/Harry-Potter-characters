@@ -49,7 +49,7 @@ class App extends React.Component {
     // console.log(this.state.searchCharacter)
     // console.log(this.state.house);
     return (
-      <div>
+      <div className="App">
         <Header />
         <main className="main">
           <Switch>
@@ -61,7 +61,7 @@ class App extends React.Component {
                   searchCharacter={this.state.searchCharacter}
                   house={this.state.house}
                 />
-                <p className="character-text">The character I am searching for is: {this.state.searchCharacter}</p>
+                {/* <p className="character-text">The character I am searching for is: {this.state.searchCharacter}</p> */}
                 <h1 className="title">Professors at Hogwarts</h1>
                 <CharacterList>
                   {this.state.characters
