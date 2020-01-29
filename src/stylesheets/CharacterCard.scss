@@ -1,0 +1,21 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // align-items: center;
+}
+
+
+.card-character {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    background-color: brown;
+
+
+    &__img {
+        width: 50px;
+    }
+}

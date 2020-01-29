@@ -80,6 +80,7 @@ class App extends React.Component {
                         patronus={characters.patronus}
                         emptyPatronus="no patronus"
                         emptyWandWood="no clue"
+                        alive={characters.alive}
                         wand={characters.wand}
                         house={characters.house}
                         id={characters.id}

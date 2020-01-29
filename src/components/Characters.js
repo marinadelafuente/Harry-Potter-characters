@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 
 function Characters(props) {
     // console.log(props)
+    const routeId = `/character/${props.id}`;
     return (
-        <li key={props.id} className="character">
-            <img className="character__img" src={props.image} alt={props.name}></img>
-            <Link to={`/character/${props.id}`}>
+        <Link to={routeId}>
+            <li className="character" key={props.id}>
+                <img className="character__img" src={props.image} alt={props.name}></img>
                 <div className="character__info">
                     <h1 className="character__name">{props.name.toUpperCase()}</h1>
                     <h3 className="character__gender">Gender: {props.gender}</h3>
@@ -19,9 +20,12 @@ function Characters(props) {
                         ? <p className="character__wand">Wand wood: {props.emptyWandWood}</p>
                         : <p className="character__wand">Wand wood: {props.wand.wood}</p>}
                 </div>
-            </Link>
-            <Link to={`/character/${props.id}`}>{`Averigua más sobre ${props.name}`}</Link>
-        </li>
+                {/* <Link to={routeId}>{`Averigua más sobre ${props.name}`}</Link> */}
+
+
+            </li>
+        </Link >
+
 
     )
 }
