@@ -53,11 +53,8 @@ class App extends React.Component {
   }
 
   renderCharacterCard(props) {
-    console.log(props)
     const equalId = parseInt(props.match.params.id);
-    console.log(this.state.characters, equalId);
     const character = this.state.characters.find((character) => {
-      console.log(character.id, equalId);
       return character.id === equalId;
     })
     if (!character) {

@@ -9,9 +9,6 @@ import Ravenclaw from '../images/Ravenclaw.png';
 
 function CharacterCard(props) {
 
-    // const equalId = props.idparam.match.params.id;
-    // const character = props.characters[equalId];
-    console.log(props.character)
     const { house, alive, image, name } = props.character;
 
     let characterHouse;

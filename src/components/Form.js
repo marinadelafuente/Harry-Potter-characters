@@ -15,7 +15,6 @@ function Form(props) {
         ev.preventDefault();
     }
 
-    // console.log(props.search)
     return (
         <React.Fragment>
             <form onSubmit={handleSubmit} className="form">
