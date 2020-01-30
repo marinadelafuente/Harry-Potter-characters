@@ -21,6 +21,7 @@ class App extends React.Component {
     this.handleSearchCharacter = this.handleSearchCharacter.bind(this);
     this.handleSelectHouse = this.handleSelectHouse.bind(this);
     this.renderCharacterCard = this.renderCharacterCard.bind(this);
+    this.filterCharacters = this.filterCharacters.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +42,16 @@ class App extends React.Component {
     this.setState({ house });
   }
 
+  filterCharacters() {
+    return this.state.characters
+      .filter((character) =>
+        this.state.house === ""
+          ? (character)
+          : (character.house.includes(this.state.house))
+      )
+      .filter(character => character.name.toUpperCase().includes(this.state.searchCharacter.toUpperCase()))
+  }
+
   renderCharacterCard(props) {
     console.log(props)
     const equalId = parseInt(props.match.params.id);
@@ -50,7 +61,7 @@ class App extends React.Component {
       return character.id === equalId;
     })
     if (!character) {
-      return <p className="unfound-character">Nope</p>
+      return <p className="unfound-character">The professor is on vacation</p>
     }
     else {
       return <CharacterCard character={character} />
@@ -71,37 +82,36 @@ class App extends React.Component {
                   searchCharacter={this.state.searchCharacter}
                   house={this.state.house}
                 />
-                <h1 className="title">Professors at Hogwarts</h1>
                 <CharacterList>
-                  {this.state.characters
-                    .filter((character) =>
-                      this.state.house === ""
-                        ? (character)
-                        : (character.house.includes(this.state.house))
+                  {this.filterCharacters().map((characters, id) => {
+                    return (
+                      characters.length === 0
+                        ? (<p className="unfound-character">The professor is on vacation</p>)
+                        : (<Characters
+                          key={id}
+                          image={characters.image}
+                          name={characters.name}
+                          gender={characters.gender}
+                          patronus={characters.patronus}
+                          emptyPatronus="no patronus"
+                          emptyWandWood="no clue"
+                          alive={characters.alive}
+                          wand={characters.wand}
+                          house={characters.house}
+                          id={characters.id}
+                        />)
                     )
-                    .filter(character => character.name.toUpperCase().includes(this.state.searchCharacter.toUpperCase()))
-                    .map((characters, id) => {
-                      return <Characters
-                        key={id}
-                        image={characters.image}
-                        name={characters.name}
-                        gender={characters.gender}
-                        patronus={characters.patronus}
-                        emptyPatronus="no patronus"
-                        emptyWandWood="no clue"
-                        alive={characters.alive}
-                        wand={characters.wand}
-                        house={characters.house}
-                        id={characters.id}
-                      />
-                    })}
+                  }
+                  )}
                 </CharacterList>
               </React.Fragment>
             } />
             <Route path="/character/:id" render={this.renderCharacterCard} />
           </Switch>
         </main>
-        <Footer />
+        <div className="footer-container">
+          <Footer />
+        </div>
       </div >
     );
   }

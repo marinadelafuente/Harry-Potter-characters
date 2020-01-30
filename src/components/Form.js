@@ -21,7 +21,7 @@ function Form(props) {
             <form onSubmit={handleSubmit} className="form">
                 <div>
                     <label
-                        htmlFor="search" >
+                        htmlFor="search" className="search-text">
                         Look for your favourite professor
                     </label>
                     <input
@@ -31,10 +31,10 @@ function Form(props) {
                         className="character__search"
                         value={props.search}
                         onChange={handleSearchCharacter}
-                        placeholder="Characters" />
+                        placeholder="Name of the professor" />
                 </div>
                 <div>
-                    <label htmlFor="select" className="select-label">Choose your favourite house</label>
+                    <label htmlFor="select" className="search-text">Choose your favourite house</label>
                     <select
                         name="select"
                         id="select"

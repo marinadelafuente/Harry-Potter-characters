@@ -8,18 +8,21 @@ function Header() {
 
     return (
         <header className="header">
-            <Link to={'/'}>
+            <div className="img-container">
+                <Link to={'/'}>
+                    <img
+                        className="title-logo"
+                        src={logo}
+                        alt="Harry Potter logo"
+                    />
+                </Link>
                 <img
-                    className="title-logo"
-                    src={logo}
-                    alt="Harry Potter logo"
+                    className="snitch"
+                    src={snitch}
+                    alt="Harry Potter snitch"
                 />
-            </Link>
-            <img
-                className="snitch"
-                src={snitch}
-                alt="Harry Potter snitch"
-            />
+            </div>
+            <h1 className="title">Professors at Hogwarts</h1>
         </header>
     );
 }

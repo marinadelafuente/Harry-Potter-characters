@@ -34,7 +34,7 @@ function CharacterCard(props) {
     }
     else {
         characterHouse = <p className="no-house">I don't belong to any house</p>
-        cardColor = "card-character"
+        cardColor = "card-character card-character-NoHouse"
     };
 
     return (
@@ -49,8 +49,8 @@ function CharacterCard(props) {
                         <h1 className="card-character__name">{name.toUpperCase()}</h1>
                         {characterHouse}
                         {alive
-                            ? <p className="character__alive">I am Alive!!</p>
-                            : <p className="character__dead">DEAD <i className={"fas fa-skull-crossbones"}></i></p>
+                            ? <p className="card-character__live">I am Alive!!</p>
+                            : <p className="card-character__live">DEAD <i className={"fas fa-skull-crossbones"}></i></p>
                         }
                     </div>
                 </div>

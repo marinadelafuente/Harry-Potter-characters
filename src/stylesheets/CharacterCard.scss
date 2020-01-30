@@ -3,17 +3,18 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    height: 68vh;
 }
 
 .card-character {
     display: flex;
     flex-direction: row;
-    width: 350px;
+    align-items: center;
+    width: 420px;
     background-color: rgb(117, 27, 27);
 
     &-Slytherin {
-        background-color: rgb(11, 58, 17);
+        background-color: rgba(11, 58, 17, 0.534);
+        width: 400px;
     }
 
     &-Ravenclaw {
@@ -24,19 +25,31 @@
         background-color: rgb(143, 141, 211);
     }
 
+    &-NoHouse {
+        background-color: rgba(246, 245, 250, 0.479);
+        width: 400px;
+    }
+
     &__img {
-        width: 150px;
+        width: 173px;
+        height: 270px;
     }
 
     &__info {
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
+        padding-left: 9px;
     }
 
     &__name {
         width: 150px;
+        // text-align: center;
+        margin-top: 0;
+    }
+
+    &__live {
+        font-weight: 600;
     }
 }
 
@@ -56,6 +69,6 @@
 }
 
 .house-shield {
-    width: 30%;
+    width: 100px;
     height: auto;
 }

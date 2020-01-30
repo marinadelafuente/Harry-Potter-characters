@@ -1,21 +1,22 @@
 @import "./core/animations.scss";
 
-// .main {
-//   height: 70vh;
-// }
-
-.title {
-  font-size: 30px;
-  text-align: center;
-}
-
 .character-text {
   text-align: center;
 }
 
 .App {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
+  font-family: 'Lora', serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.unfound-character {
+  font-size: 50px;
+}
+
+a:link {
+  text-decoration: none;
 }

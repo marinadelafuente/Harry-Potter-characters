@@ -1,15 +1,27 @@
 .header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 27vh;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
 }
 
 .title-logo {
-    width: 300px;
-    text-align: center;
+    width: 340px;
+    padding-left: -10px;
 }
 
 .snitch {
     width: 70px;
     height: 45px;
+}
+
+.title {
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Uncial Antiqua', cursive;
+    margin-top: -15px;
 }
