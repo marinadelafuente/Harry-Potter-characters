@@ -1,6 +1,5 @@
 import React from 'react';
 import '../stylesheets/App.scss';
-import data from '../services/data.json'
 import CharacterList from './CharacterList';
 import Characters from './Characters';
 import CharacterCard from './CharacterCard';
@@ -10,7 +9,6 @@ import Form from './Form';
 import getDataFromApi from '../services/fetch'
 import { Route, Switch } from 'react-router-dom';
 
-// console.log(data)
 
 class App extends React.Component {
   constructor(props) {
@@ -22,8 +20,7 @@ class App extends React.Component {
     }
     this.handleSearchCharacter = this.handleSearchCharacter.bind(this);
     this.handleSelectHouse = this.handleSelectHouse.bind(this);
-
-    // this.renderCharacters = this.renderCharacters.bind(this);
+    this.renderCharacterCard = this.renderCharacterCard.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +29,7 @@ class App extends React.Component {
         const characters = data.map((character, index) => {
           return { ...character, id: index }
         })
-        this.setState({ characters })
+        this.setState({ characters: characters })
       })
   }
 
@@ -44,10 +41,23 @@ class App extends React.Component {
     this.setState({ house });
   }
 
+  renderCharacterCard(props) {
+    console.log(props)
+    const equalId = parseInt(props.match.params.id);
+    console.log(this.state.characters, equalId);
+    const character = this.state.characters.find((character) => {
+      console.log(character.id, equalId);
+      return character.id === equalId;
+    })
+    if (!character) {
+      return <p className="unfound-character">Nope</p>
+    }
+    else {
+      return <CharacterCard character={character} />
+    }
+  }
+
   render() {
-    console.log(this.state.characters)
-    // console.log(this.state.searchCharacter)
-    // console.log(this.state.house);
     return (
       <div className="App">
         <Header />
@@ -61,7 +71,6 @@ class App extends React.Component {
                   searchCharacter={this.state.searchCharacter}
                   house={this.state.house}
                 />
-                {/* <p className="character-text">The character I am searching for is: {this.state.searchCharacter}</p> */}
                 <h1 className="title">Professors at Hogwarts</h1>
                 <CharacterList>
                   {this.state.characters
@@ -85,13 +94,11 @@ class App extends React.Component {
                         house={characters.house}
                         id={characters.id}
                       />
-                    })}}
+                    })}
                 </CharacterList>
               </React.Fragment>
             } />
-            <Route path="/character/:id" render={routerProps =>
-              <CharacterCard idparam={routerProps} data={data} />
-            } />
+            <Route path="/character/:id" render={this.renderCharacterCard} />
           </Switch>
         </main>
         <Footer />

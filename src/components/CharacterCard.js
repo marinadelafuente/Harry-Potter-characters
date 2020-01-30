@@ -9,9 +9,10 @@ import Ravenclaw from '../images/Ravenclaw.png';
 
 function CharacterCard(props) {
 
-    const equalId = props.idparam.match.params.id;
-    const character = props.data[equalId];
-    const { house, alive, image, name } = character;
+    // const equalId = props.idparam.match.params.id;
+    // const character = props.characters[equalId];
+    console.log(props.character)
+    const { house, alive, image, name } = props.character;
 
     let characterHouse;
     let cardColor;
@@ -33,10 +34,9 @@ function CharacterCard(props) {
     }
     else {
         characterHouse = <p className="no-house">I don't belong to any house</p>
+        cardColor = "card-character"
     };
 
-    console.log(props.data)
-    console.log(alive)
     return (
         <React.Fragment>
             <div className="card">
@@ -57,6 +57,7 @@ function CharacterCard(props) {
             </div>
         </React.Fragment>
     )
+
 }
 
 export default CharacterCard;

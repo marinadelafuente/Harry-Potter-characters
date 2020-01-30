@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 
 function Characters(props) {
-    // console.log(props)
     const routeId = `/character/${props.id}`;
     return (
         <Link to={routeId}>
@@ -20,13 +19,8 @@ function Characters(props) {
                         ? <p className="character__wand">Wand wood: {props.emptyWandWood}</p>
                         : <p className="character__wand">Wand wood: {props.wand.wood}</p>}
                 </div>
-                {/* <Link to={routeId}>{`Averigua más sobre ${props.name}`}</Link> */}
-
-
             </li>
         </Link >
-
-
     )
 }
 
