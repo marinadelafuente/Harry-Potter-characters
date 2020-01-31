@@ -2,7 +2,6 @@ import React from 'react';
 import '../stylesheets/Form.scss';
 
 function Form(props) {
-    console.log(props.house)
     const handleSearchCharacter = (ev) => {
         props.handleSearchCharacter(ev.target.value);
     }

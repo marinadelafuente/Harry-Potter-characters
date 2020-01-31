@@ -1,20 +1,45 @@
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+}
+
+.button-return {
+    margin-bottom: 15px;
+    width: 80px;
+    height: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Indie Flower', cursive;
+    font-size: 15px;
+
+    &:hover {
+        box-shadow: 0px 1px 11px 6px rgba(255, 255, 255, 1);
+        background-color: rgb(89, 98, 131);
+        color: white;
+    }
 }
 
 .card-character {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 420px;
-    background-color: rgb(117, 27, 27);
+    justify-content: center;
+    border: yellow solid 1px;
+
+    &__img {
+        width: 175px;
+        height: 250px
+    }
+
+    &-Gryffindor {
+        background-color: rgba(117, 27, 27, 0.842);
+    }
 
     &-Slytherin {
         background-color: rgba(11, 58, 17, 0.534);
-        width: 400px;
     }
 
     &-Ravenclaw {
@@ -27,48 +52,43 @@
 
     &-NoHouse {
         background-color: rgba(246, 245, 250, 0.479);
-        width: 400px;
-    }
-
-    &__img {
-        width: 173px;
-        height: 270px;
     }
 
     &__info {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        padding-left: 9px;
+        justify-content: space-evenly;
+        align-items: center;
+        max-width: 240px;
+        height: 250px;
+        width: fit-content;
+        // height: fit-content;
+        flex-wrap: wrap;
     }
 
     &__name {
-        width: 150px;
-        // text-align: center;
-        margin-top: 0;
+        margin: 0;
+        padding: 3px;
+        font-family: 'Uncial Antiqua', cursive;
+        font-size: 26px;
+        text-align: center;
+        text-shadow: -1px -1px 2px rgb(248, 250, 248);
     }
 
     &__live {
         font-weight: 600;
-    }
-}
-
-.button-return {
-    margin-bottom: 15px;
-    width: 150px;
-    height: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'Indie Flower', cursive;
-    font-size: 15px;
-
-    &:hover {
-        box-shadow: 0px 1px 11px 6px rgba(255, 255, 255, 1);
-        background-color: rgb(168, 247, 22);
+        font-family: 'Indie Flower', cursive;
+        font-size: 18px;
+        margin-top: 0;
     }
 }
 
 .house-shield {
-    width: 100px;
+    max-width: 99px;
     height: auto;
+}
+
+.no-house {
+    font-family: 'Indie Flower', cursive;
+    font-size: 18px;
 }

@@ -13,8 +13,8 @@ function Characters(props) {
                 <div className="character__info">
                     <h1 className="character__name">{props.name.toUpperCase()}</h1>
                     {props.gender === "female"
-                        ? <h3 className="character__gender">I am 👩‍🎓</h3>
-                        : <h3 className="character__gender">I am 👨🏻</h3>}
+                        ? <h3 className="character__gender">I am <span role="img" aria-label="woman">👩‍🎓</span></h3>
+                        : <h3 className="character__gender">I am <span role="img" aria-label="man">👨🏻</span></h3>}
                     {!props.patronus
                         ? <p className="character__patronus">Patronus: {props.emptyPatronus}</p>
                         : <p className="character__patronus">Patronus: {props.patronus}</p>}
