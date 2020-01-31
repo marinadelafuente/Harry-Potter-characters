@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 80px;
 }
 
 .character__search {
@@ -18,4 +19,28 @@
 .search-text {
     font-family: 'Zhi Mang Xing';
     font-size: 20px;
+}
+
+@media all and (min-width: 768px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .character__search {
+        width: 150px;
+        margin-left: 10px;
+        margin-bottom: 30px;
+    }
+
+    .character__select {
+        margin-left: 10px;
+    }
+
+    .search-text {
+        font-family: 'Zhi Mang Xing';
+        font-size: 20px;
+    }
 }
